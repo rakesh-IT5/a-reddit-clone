@@ -28,8 +28,8 @@ pipeline {
         stage("Sonarqube Analysis") {
             steps {
                 withSonarQubeEnv('SonarQube-Server') {
-                    sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=reddit-clone-cI \
-                    -Dsonar.projectKey=reddit-clone-cI'''
+                    sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=reddit-clone-ci \
+                    -Dsonar.projectKey=reddit-clone-ci'''
                 }
             }
         }
@@ -81,7 +81,7 @@ pipeline {
 	 stage("Trigger CD Pipeline") {
             steps {
                 script {
-                    sh "curl -v -k --user rakesh:${JENKINS_API_TOKEN} -X POST -H 'cache-control: no-cache' -H 'content-type: application/x-www-form-urlencoded' --data 'IMAGE_TAG=${IMAGE_TAG}' 'ec2-13-201-26-74.ap-south-1.compute.amazonaws.com.com:8080/job/Reddit-Clone-CD/buildWithParameters?token=gitops-token'"
+                    sh "curl -v -k --user rakesh:${JENKINS_API_TOKEN} -X POST -H 'cache-control: no-cache' -H 'content-type: application/x-www-form-urlencoded' --data 'IMAGE_TAG=${IMAGE_TAG}' 'ec2-13-201-55-78.ap-south-1.compute.amazonaws.com/job/Reddit-clone-cd/buildWithParameters?token=gitops-token'"
                 }
             }
          }
