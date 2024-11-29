@@ -6,7 +6,7 @@ pipeline {
     }
     environment {
         SCANNER_HOME = tool 'sonar-scanner'
-        APP_NAME = "rakesh-reddit-clone-pipeline"
+        APP_NAME = "rakesh-reddit-clone"
         RELEASE = "1.0.0"
         DOCKER_USER = "rakeshdhub"
         DOCKER_PASS = 'dockerhub'
